@@ -1,0 +1,243 @@
+@import url("https://use.typekit.net/czp1laj.css");
+
+$neuBase: #ecf0f3;
+$neuLight: #ffffff;
+$neuShadow: #cbced1;
+
+$greendaleBlue: #0f3a77;
+$greendaleBlueLite: #2e7be8;
+$greendalePink: #d622e3;
+$greendalePinkLite: #e371eb;
+
+@mixin neumorph-L-lifted {
+  box-shadow: 15px 15px 20px $neuShadow, 5px 5px 5px $neuShadow,
+    -15px -15px 20px $neuLight, -5px -5px 5px $neuLight;
+  outline: 0;
+}
+
+@mixin neumorph-M-lifted {
+  box-shadow: 5px 5px 10px $neuShadow, 2px 2px 2px $neuShadow,
+    -5px -5px 10px $neuLight, -2px -2px 2px $neuLight;
+  outline: 0;
+}
+
+@mixin neumorph-S-lifted {
+  box-shadow: 5px 5px 5px $neuShadow, -5px -5px 5px $neuLight;
+  outline: 0;
+}
+
+@mixin neumorph-L-pressed {
+  box-shadow: inset 10px 10px 15px #cbced1, inset -10px -10px 15px #ffffff;
+  outline: 0;
+}
+
+@mixin neumorph-S-pressed {
+  box-shadow: inset 5px 5px 5px #cbced1, inset -5px -5px 5px #ffffff;
+  outline: 0;
+}
+
+* {
+  //   box-sizing: border-box;
+  font-family: acumin-pro, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  color: $greendaleBlue;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $neuBase;
+  height: 100vh;
+  margin: 0;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 20% auto;
+  width: 1000px;
+  max-height: 100%;
+  border-radius: 30px;
+  background: $neuBase;
+  @include neumorph-L-lifted();
+  padding: 20px 30px 20px 30px;
+  .left-container {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    grid-area: 1 / 1 / 2 / 2;
+    #greendale-logo {
+      object-fit: contain;
+      width: 100px;
+      height: 100px;
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+    ul {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      li {
+        position: relative;
+        list-style-type: none;
+        padding: 10px 15px 10px 15px;
+        margin: 15px 30px 15px 0;
+        border-radius: 5px;
+        @include neumorph-S-lifted();
+        &:nth-of-type(4) {
+          position: relative;
+          font-weight: 700;
+          color: $greendaleBlueLite;
+          @include neumorph-S-pressed();
+        }
+      }
+    }
+    .user {
+      position: absolute;
+      bottom: 10px;
+      display: flex;
+      align-items: center;
+      align-self: flex-end;
+      width: 100%;
+      .user-pic-container {
+        position: relative;
+        height: 50px;
+        min-width: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        @include neumorph-S-pressed();
+        img {
+          position: absolute;
+          left: -10px;
+          width: 150%;
+          object-fit: cover;
+        }
+      }
+      .user-name {
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        height: 40px;
+        width: 100%;
+        background-color: $neuBase;
+        border-radius: 5px;
+        margin-left: 10px;
+      }
+    }
+  }
+  .right-container {
+    grid-area: 1 / 2 / 2 / 3;
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+    .directory-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      .directory {
+        font-size: 1.2rem;
+        color: darkgrey;
+        span {
+          font-size: inherit;
+          font-family: inherit;
+          color: grey;
+        }
+      }
+    }
+    .info-container {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: 220 auto;
+      max-width: 100%;
+      max-height: 100%;
+      //   flex-grow: 1;
+      @include neumorph-L-pressed();
+      border-radius: 15px;
+      padding: 30px;
+      .left-info-container {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        grid-area: 1 / 1 / 2 / 2;
+        .profile {
+          .profile-pic {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid $neuBase;
+            @include neumorph-M-lifted();
+            img {
+              max-width: 100%;
+              object-fit: cover;
+            }
+          }
+          .name {
+            margin-top: 10px;
+            font-weight: 700;
+          }
+        }
+        .courses {
+          height: 100%;
+          border-radius: 15px;
+          padding: 20px;
+          margin-top: 20px;
+          @include neumorph-M-lifted();
+          .title {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+          }
+          .course-list {
+            ul {
+              display: flex;
+              flex-flow: column nowrap;
+              gap: 10px;
+              padding: 0;
+              margin: 10px 0;
+              li {
+                list-style-type: none;
+                font-size: 0.8rem;
+                padding: 10px;
+                border-radius: 10px;
+                @include neumorph-S-lifted();
+                color: grey;
+                span {
+                  //   font-weight: 700;
+                }
+              }
+            }
+          }
+        }
+      }
+      .right-info-container {
+        grid-area: 1 / 2 / 2 / 3;
+        width: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        .right-info-container-top {
+          height: 390px;
+          width: 490px;
+          border-radius: 15px;
+          @include neumorph-M-lifted();
+        }
+        .right-info-container-bottom {
+          height: 200px;
+          width: 490px;
+          border-radius: 15px;
+          @include neumorph-M-lifted();
+        }
+      }
+    }
+  }
+}
